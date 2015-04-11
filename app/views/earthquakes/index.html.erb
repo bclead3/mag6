@@ -20,7 +20,6 @@
       <th>Quake identifier</th>
       <th>Updated</th>
       <th>Place</th>
-      <th>Quake type</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -43,7 +42,6 @@
         <td><%= earthquake.quake_identifier %></td>
         <td><%= earthquake.updated %></td>
         <td><%= earthquake.place %></td>
-        <td><%= earthquake.quake_type %></td>
         <td><%= link_to 'Show', earthquake %></td>
         <td><%= link_to 'Edit', edit_earthquake_path(earthquake) %></td>
         <td><%= link_to 'Destroy', earthquake, method: :delete, data: { confirm: 'Are you sure?' } %></td>

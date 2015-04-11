@@ -16,7 +16,6 @@ class CreateEarthquakes < ActiveRecord::Migration
       t.string :quake_identifier
       t.datetime :updated
       t.string :place
-      t.string :quake_type
 
       t.timestamps null: false
     end

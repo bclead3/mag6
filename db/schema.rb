@@ -29,7 +29,6 @@ ActiveRecord::Schema.define(version: 20150411111005) do
     t.string   "quake_identifier"
     t.datetime "updated"
     t.string   "place"
-    t.string   "quake_type"
     t.datetime "created_at",                                null: false
     t.datetime "updated_at",                                null: false
   end

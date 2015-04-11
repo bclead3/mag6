@@ -29,7 +29,6 @@ module Parsers
                         quake_identifier= row_array[13]
                         updated     = Utils::GenericUtils.scrub_date(row_array[14])
                         place       = row_array[15]
-                        quake_type  = row_array[16]
 
                         unless time_stamp.blank?
                             Earthquake.where(quake_identifier: quake_identifier).first_or_create do |quake_obj|
@@ -47,7 +46,6 @@ module Parsers
                                                 quake_obj.net           = net
                                                 quake_obj.updated       = updated
                                                 quake_obj.place         = place
-                                                quake_obj.quake_type    = quake_type
                             end
                         end
                     end
