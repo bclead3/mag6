@@ -31,25 +31,25 @@ module Parsers
                         quake_type  = row_array[16]
                         #puts "#{time_stamp}|#{time_of_day}|#{latitude}|#{longitude}|#{depth}|#{mag}|#{mag_type}|#{nst}|#{gap}|#{dmin}|#{rms}|#{net}|#{quake_identifier}|#{updated}|#{place}|#{quake_type}"
                         unless time_stamp.blank?
-                            quake_obj = Earthquake.where(latitude: latitude,
-                                                         longitude: longitude,
-                                                         depth: depth,
-                                                         mag: mag
-                            ).first_or_create
+                            Earthquake.where(quake_identifier: quake_identifier).first_or_create do |quake_obj|
+                                                quake_obj.time_stamp    = time_stamp
+                                                quake_obj.time_of_day   = time_of_day
+                                                quake_obj.latitude      = latitude
+                                                quake_obj.longitude     = longitude
+                                                quake_obj.depth         = depth
+                                                quake_obj.mag           = mag
+                                                quake_obj.mag_type      =  mag_type
+                                                quake_obj.nst = nst
+                                                quake_obj.gap = gap
+                                                quake_obj.dmin = dmin
+                                                quake_obj.rms = rms
+                                                quake_obj.net = net
+                                                quake_obj.quake_identifier = quake_identifier
+                                                quake_obj.updated = updated
+                                                quake_obj.place = place
+                                                quake_obj.quake_type = quake_type
+                            end
 
-                            quake_obj.time_stamp = time_stamp
-                            quake_obj.time_of_day = time_of_day
-                            quake_obj.mag_type =  mag_type
-                            quake_obj.nst = nst
-                            quake_obj.gap = gap
-                            quake_obj.dmin = dmin
-                            quake_obj.rms = rms
-                            quake_obj.net = net
-                            quake_obj.quake_identifier = quake_identifier
-                            quake_obj.updated = updated
-                            quake_obj.place = place
-                            quake_obj.quake_type = quake_type
-                            quake_obj.save
                         end
                     end
                 end
