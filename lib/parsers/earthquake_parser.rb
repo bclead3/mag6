@@ -2,8 +2,9 @@ module Parsers
     class EarthquakeParser
         START_ROW=1
         SHEET_POSITION = 1
+        DEFAULT_FILE_NAME = 'Mag6PlusEarthquakes_1900-2013.xlsx'
 
-        def self.process(filename = Rails.root.join('lib','assets','Mag6PlusEarthquakes_1900-2013.xlsx'), display = false)
+        def self.process(filename = Rails.root.join('lib','assets',DEFAULT_FILE_NAME), display = false)
             sheet = Utils::GenericUtils.get_sheet(filename,SHEET_POSITION)
             total_rows = sheet.rows.count
             (START_ROW..total_rows).each do |row_number|
@@ -29,7 +30,7 @@ module Parsers
                         updated     = Utils::GenericUtils.scrub_date(row_array[14])
                         place       = row_array[15]
                         quake_type  = row_array[16]
-                        #puts "#{time_stamp}|#{time_of_day}|#{latitude}|#{longitude}|#{depth}|#{mag}|#{mag_type}|#{nst}|#{gap}|#{dmin}|#{rms}|#{net}|#{quake_identifier}|#{updated}|#{place}|#{quake_type}"
+
                         unless time_stamp.blank?
                             Earthquake.where(quake_identifier: quake_identifier).first_or_create do |quake_obj|
                                                 quake_obj.time_stamp    = time_stamp
@@ -38,18 +39,16 @@ module Parsers
                                                 quake_obj.longitude     = longitude
                                                 quake_obj.depth         = depth
                                                 quake_obj.mag           = mag
-                                                quake_obj.mag_type      =  mag_type
-                                                quake_obj.nst = nst
-                                                quake_obj.gap = gap
-                                                quake_obj.dmin = dmin
-                                                quake_obj.rms = rms
-                                                quake_obj.net = net
-                                                quake_obj.quake_identifier = quake_identifier
-                                                quake_obj.updated = updated
-                                                quake_obj.place = place
-                                                quake_obj.quake_type = quake_type
+                                                quake_obj.mag_type      = mag_type
+                                                quake_obj.nst           = nst
+                                                quake_obj.gap           = gap
+                                                quake_obj.dmin          = dmin
+                                                quake_obj.rms           = rms
+                                                quake_obj.net           = net
+                                                quake_obj.updated       = updated
+                                                quake_obj.place         = place
+                                                quake_obj.quake_type    = quake_type
                             end
-
                         end
                     end
                 end
