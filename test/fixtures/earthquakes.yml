@@ -1,0 +1,37 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  time_stamp: 2015-04-11 06:10:05
+  time_of_day: 2015-04-11 06:10:05
+  latitude: 9.99
+  longitude: 9.99
+  depth: 9.99
+  mag: 9.99
+  mag_type: MyString
+  nst: 1
+  gap: 9.99
+  dmin: 9.99
+  rms: 9.99
+  net: MyString
+  quake_identifier: MyString
+  updated: 2015-04-11 06:10:05
+  place: MyString
+  quake_type: MyString
+
+two:
+  time_stamp: 2015-04-11 06:10:05
+  time_of_day: 2015-04-11 06:10:05
+  latitude: 9.99
+  longitude: 9.99
+  depth: 9.99
+  mag: 9.99
+  mag_type: MyString
+  nst: 1
+  gap: 9.99
+  dmin: 9.99
+  rms: 9.99
+  net: MyString
+  quake_identifier: MyString
+  updated: 2015-04-11 06:10:05
+  place: MyString
+  quake_type: MyString

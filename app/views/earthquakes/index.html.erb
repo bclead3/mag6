@@ -1,0 +1,57 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Earthquakes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Time stamp</th>
+      <th>Time of day</th>
+      <th>Latitude</th>
+      <th>Longitude</th>
+      <th>Depth</th>
+      <th>Mag</th>
+      <th>Mag type</th>
+      <th>Nst</th>
+      <th>Gap</th>
+      <th>Dmin</th>
+      <th>Rms</th>
+      <th>Net</th>
+      <th>Quake identifier</th>
+      <th>Updated</th>
+      <th>Place</th>
+      <th>Quake type</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @earthquakes.each do |earthquake| %>
+      <tr>
+        <td><%= earthquake.time_stamp %></td>
+        <td><%= earthquake.time_of_day %></td>
+        <td><%= earthquake.latitude %></td>
+        <td><%= earthquake.longitude %></td>
+        <td><%= earthquake.depth %></td>
+        <td><%= earthquake.mag %></td>
+        <td><%= earthquake.mag_type %></td>
+        <td><%= earthquake.nst %></td>
+        <td><%= earthquake.gap %></td>
+        <td><%= earthquake.dmin %></td>
+        <td><%= earthquake.rms %></td>
+        <td><%= earthquake.net %></td>
+        <td><%= earthquake.quake_identifier %></td>
+        <td><%= earthquake.updated %></td>
+        <td><%= earthquake.place %></td>
+        <td><%= earthquake.quake_type %></td>
+        <td><%= link_to 'Show', earthquake %></td>
+        <td><%= link_to 'Edit', edit_earthquake_path(earthquake) %></td>
+        <td><%= link_to 'Destroy', earthquake, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Earthquake', new_earthquake_path %>
