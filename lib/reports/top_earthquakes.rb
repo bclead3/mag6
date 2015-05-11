@@ -1,6 +1,8 @@
+#require 'lib/reports/top_earthquakes'
+
 module Reports
     class TopEarthquakes
-        def self.write_xls(filename = "TopEarthquakes.xls")
+        def self.write_xls(filename = 'TopEarthquakes.xls')
             top_earthquakes = Earthquake.order('mag DESC').limit(100)
 
             book = Utils::GenericUtils.create_workbook_from_file(filename)

@@ -1,28 +1,55 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+The Mag6 project demonstrates how to read an Excel file into a database,
+and how to export a database table into an Excel (.xls) file.
 
-Things you may want to cover:
+Once you clone the project, the default database is Sqlite3.
 
-* Ruby version
+Run the following command to make sure your gems are up-to-date:
+   bundle install
 
-* System dependencies
+If there is a problem on Windows, you might be seeing the following
+error:
+SSL_connect returned=1 errno=0 state=SSLv3 read server certificate B: certificate verify failed
 
-* Configuration
+This can be overcome by either manually updating the certificate
+for RubyGems using the instructions here:
+https://gist.github.com/luislavena/f064211759ee0f806c88
 
-* Database creation
+Or just upgrading RubyGems to a newer version.
 
-* Database initialization
+Once you successfully 'bundle install' then migrate the database
+tables
+   rake db:migrate
 
-* How to run the test suite
+This should create Sqlite3 files in your Rails /db directory.
 
-* Services (job queues, cache servers, search engines, etc.)
+To populate the database, you can now use a Thor script. To see
+what Thor scripts are available, type
+   thor list
 
-* Deployment instructions
+You'll see the following
+C:\Sites\mag6>thor list
+populate_data
+-------------
+thor populate_data:process  # reads Excel data and populates earthquakes table.
 
-* ...
+reports
+-------
+thor reports:process  # Creates an old-style Excel (.xls) file for the top 10...
+Type
+  thor populate_data:process
+
+A process will run in the background importing over 8,000 records
+into a Sqlite3 earthquakes table.
+
+Now you can run
+  rails s
+
+to start the server.
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+To export an Excel workbook of the top 100 earthquakes, in the console type
+   thor reports:process
+
+A file 'TopEarthquakes.xls' will appear in the Mag6 project root directory.

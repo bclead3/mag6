@@ -2,6 +2,11 @@ require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
 
+#require 'lib/assets'
+#require 'lib/parsers/earthquake_parser'
+#require 'lib/reports/top_earthquakes'
+#require 'lib/utils/generic_utils'
+
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
@@ -24,5 +29,12 @@ module Mag6
     config.active_record.raise_in_transactional_callbacks = true
 
     config.autoload_paths << Rails.root.join('lib')
+    #config.eager_load_paths += %W(#{config.root}/lib)
+    # config.autoload_paths += Dir[Rails.root.join('lib','assets')]
+    config.autoload_paths += Dir[Rails.root.join('lib','parsers')]
+    config.autoload_paths += Dir[Rails.root.join('lib','reports')]
+    #config.autoload_paths += Dir[Rails.root.join('lib','reports','top_earthquakes')]
+    # config.autoload_paths += Dir[Rails.root.join('lib','tasks')]
+    config.autoload_paths += Dir[Rails.root.join('lib','utils')]
   end
 end
